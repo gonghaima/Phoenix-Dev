@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_STORE
 node_modules
 scripts/flow/*/.flowconfig
@@ -23,3 +24,6 @@ chrome-user-data
 *.swp
 *.swoo
 
+=======
+node_modules
+>>>>>>> d933cbb36d77b756683dc38a90b3373623bce1c4
