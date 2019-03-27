@@ -1,20 +1,36 @@
 import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../../store";
 
-import styles from "./Form.module.css";
 
-const Form = () => {
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  chip: {
+    margin: theme.spacing.unit,
+  },
+});
 
+
+const Form = props => {
   const [state, dispatch] = useContext(StoreContext);
-
+  const { classes } = props;
+  console.log(classes);
   return (
-    <div>
+    <div className="container">
       <h1>Project Phoenix</h1>
-      <div className="chips" />
+      <div>
+      <div className="chip">
+    Tag
+    <i className="close material-icons">close</i>
+  </div>
+      </div>
 
-      <div className={styles.inputfield}>
+      <div>
+      
         <input
-          className={styles.input}
           name="name"
           placeholder="Enter your name"
           onBlur={e =>
@@ -27,14 +43,12 @@ const Form = () => {
       <br />
       <div>
         <button
-          className={styles.m}
           onClick={() => dispatch({ type: "addFruit", payload: "Banana" })}
         >
           Add Banana
         </button>
 
         <button
-          className={styles.m}
           onClick={() => dispatch({ type: "addFruit", payload: "Apple" })}
         >
           Add Apple
@@ -57,4 +71,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Form

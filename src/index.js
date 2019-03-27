@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import 'materialize-css/dist/css/materialize.min.css'
+import M from 'materialize-css'
 
 // Global Store
 import Store from "./store";
