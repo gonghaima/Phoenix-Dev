@@ -1,35 +1,24 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../store";
+import Button from "../Button";
 
-
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-  },
-  chip: {
-    margin: theme.spacing.unit,
-  },
-});
-
-
-const Form = props => {
+const Form = () => {
   const [state, dispatch] = useContext(StoreContext);
-  const { classes } = props;
-  console.log(classes);
+  const [formState, handleState] = useState("");
+
   return (
     <div className="container">
       <h1>Project Phoenix</h1>
       <div>
-      <div className="chip">
-    Tag
-    <i className="close material-icons">close</i>
-  </div>
+
+      <div class="chips chips-initial"></div>
+        <div className="chip">
+          Tag
+          <i className="close material-icons">close</i>
+        </div>
       </div>
 
       <div>
-      
         <input
           name="name"
           placeholder="Enter your name"
@@ -42,17 +31,9 @@ const Form = props => {
       <br />
       <br />
       <div>
-        <button
-          onClick={() => dispatch({ type: "addFruit", payload: "Banana" })}
-        >
-          Add Banana
-        </button>
-
-        <button
-          onClick={() => dispatch({ type: "addFruit", payload: "Apple" })}
-        >
-          Add Apple
-        </button>
+        <Button label="Add Carrot" payload="Carrot" />
+        <Button label="Add Banana" payload="Banana" />
+        <Button label="Add Apple" payload="Apple" />
       </div>
       <ul>
         {state.fruits &&
@@ -71,4 +52,4 @@ const Form = props => {
   );
 };
 
-export default Form
+export default Form;
