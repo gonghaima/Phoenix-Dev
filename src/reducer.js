@@ -1,5 +1,4 @@
-
-const reducer = (state, action) => {
+export default (state, action) => {
   switch (action.type) {
     case "addFruit":
       return !state.fruits.includes(action.payload) && state.fruits
@@ -13,5 +12,3 @@ const reducer = (state, action) => {
       throw new Error(`Action type must be defined`);
   }
 };
-
-export default reducer;
