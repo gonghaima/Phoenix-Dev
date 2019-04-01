@@ -4,22 +4,29 @@ import { useStore } from "../../store/useStore";
 
 export default function LoginForm() {
   const { state, dispatch } = useStore();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    state.user.username && state.user.password
+      ? console.log("entered correctly")
+      : console.log("not all fields entered");
+  };
   return (
     <div className="container loginForm">
-    <div className="row">
-      <div className="col s12">{JSON.stringify(state.user)}</div>
-    </div>
+      <div className="row">
+        <div className="col s12">{JSON.stringify(state.user)}</div>
+      </div>
       <div className="logo">
         <img
           src="https://my.woolworthsrewards.com.au/sf/phoenix/phoenix-new.png"
           width="250"
         />
       </div>
-      <form noValidate onSubmit={()=>dispatch({type: "formSubmit"})}>
+      <form onSubmit={handleSubmit} noValidate >
         <h1>Sign in</h1>
         <div className="input-field">
           <input
-            placeholder="Placeholder"
+            placeholder="Username"
             type="text"
             className="validate"
             value={state.user.username}
@@ -29,13 +36,17 @@ export default function LoginForm() {
                 payload: { username: e.target.value }
               })
             }
+            
           />
           <label htmlFor="first_name">First Name</label>
+          {state.user.errors == 0 && <span className="red-text">Please enter username</span>}
         </div>
         <div className="input-field">
           <input
             type="password"
+            placeholder="Password"
             className="validate"
+
             value={state.user.password}
             onChange={e =>
               dispatch({
@@ -45,6 +56,7 @@ export default function LoginForm() {
             }
           />
           <label htmlFor="password">Password</label>
+          <span className="helper-text" data-error="Please enter a password"></span>
         </div>
         <button
           className="btn btn-large waves-effect waves-light"

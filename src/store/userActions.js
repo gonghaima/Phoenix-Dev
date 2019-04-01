@@ -30,5 +30,8 @@ export const userActions = {
         ...payload
       }
     };
+  },
+  formSubmit: (state,payload) =>{
+    
   }
 };
