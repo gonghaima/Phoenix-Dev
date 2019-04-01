@@ -4,7 +4,6 @@ import Button from "../Button";
 
 const Form = () => {
   const [state, dispatch] = useContext(StoreContext);
-  const [formState, handleState] = useState("");
 
   return (
     <div className="container">
@@ -12,15 +11,16 @@ const Form = () => {
       <div>
 
       <div class="chips chips-initial"></div>
+      {state.chips.map(chip => 
         <div className="chip">
-          Tag
+          {chip}
           <i className="close material-icons">close</i>
         </div>
+      )}
       </div>
 
       <div>
         <input
-          name="name"
           placeholder="Enter your name"
           onBlur={e =>
             e.target.value &&
