@@ -4,7 +4,7 @@ export const StoreContext = createContext({});
 
 const initialState = { fruits: [], vegetables: [] };
 
-const Store = ({ children }) => {
+export default ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <StoreContext.Provider value={[state, dispatch]}>
@@ -12,4 +12,3 @@ const Store = ({ children }) => {
     </StoreContext.Provider>
   );
 };
-export default Store;
